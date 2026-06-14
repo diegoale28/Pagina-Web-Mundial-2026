@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundial 2026 | Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">Mundial 2026</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="fasedegrupos.html">Fase de Grupos</a></li>
+                <li><a href="index.html#sedes">Sedes</a></li>
+                <li><a href="registro.html" class="active">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-page-container">
+        <section class="glass-form">
+            <h2>Únete a la Experiencia</h2>
+            <p>Regístrate localmente para simular el almacenamiento de tu cuenta.</p>
+            
+            <form id="formRegistro">
+                <div class="input-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" required placeholder="Tu nombre">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" required placeholder="correo@ejemplo.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="equipo">Selección Favorita</label>
+                    <select id="equipo">
+                        <option value="Alemania">Alemania</option>
+                        <option value="Arabia Saudita">Arabia Saudita</option>
+                        <option value="Argelia">Argelia</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Bélgica">Bélgica</option>
+                        <option value="Bosnia y Herzegovina">Bosnia y Herzegovina</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Cabo Verde">Cabo Verde</option>
+                        <option value="Canadá">Canadá</option>
+                        <option value="Catar">Catar</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Corea del Sur">Corea del Sur</option>
+                        <option value="Costa de Marfil">Costa de Marfil</option>
+                        <option value="Croacia">Croacia</option>
+                        <option value="Curazao">Curazao</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egipto">Egipto</option>
+                        <option value="Escocia">Escocia</option>
+                        <option value="España">España</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="Francia">Francia</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Haití">Haití</option>
+                        <option value="Inglaterra">Inglaterra</option>
+                        <option value="Irak">Irak</option>
+                        <option value="Irán">Irán</option>
+                        <option value="Japón">Japón</option>
+                        <option value="Jordania">Jordania</option>
+                        <option value="Marruecos">Marruecos</option>
+                        <option value="México">México</option>
+                        <option value="Noruega">Noruega</option>
+                        <option value="Nueva Zelanda">Nueva Zelanda</option>
+                        <option value="Países Bajos">Países Bajos</option>
+                        <option value="Panamá">Panamá</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="República Checa">República Checa</option>
+                        <option value="República Democrática del Congo">República Democrática del Congo</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Sudáfrica">Sudáfrica</option>
+                        <option value="Suecia">Suecia</option>
+                        <option value="Suiza">Suiza</option>
+                        <option value="Túnez">Túnez</option>
+                        <option value="Turquía">Turquía</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Uzbekistán">Uzbekistán</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Guardar en Navegador</button>
+            </form>
+        </section>
+
+        <section class="tabla-contenedor">
+            <h3>Usuarios Registrados</h3>
+            <table id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Favorito</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <button id="btnLimpiar" class="btn-clear">Limpiar Datos</button>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById('formRegistro');
+        const tablaBody = document.querySelector('#tablaUsuarios tbody');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+
+        // Función para cargar y renderizar los usuarios desde LocalStorage
+        function mostrarUsuarios() {
+            tablaBody.innerHTML = '';
+
+            const usuarios = JSON.parse(localStorage.getItem('usuariosMundial')) || [];
+            
+            usuarios.forEach(user => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${user.nombre}</td>
+                    <td>${user.email}</td>
+                    <td>${user.equipo}</td>
+                `;
+                tablaBody.appendChild(fila);
+            });
+        }
+
+        // Evento al enviar el formulario
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+
+            const nuevoUsuario = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                equipo: document.getElementById('equipo').value
+            };
+
+            const usuarios = JSON.parse(localStorage.getItem('usuariosMundial')) || [];
+            usuarios.push(nuevoUsuario);
+
+            // Guardamos el array actualizado convertido en String JSON
+            localStorage.setItem('usuariosMundial', JSON.stringify(usuarios));
+            
+            form.reset(); 
+            mostrarUsuarios(); 
+        });
+
+        
+        btnLimpiar.addEventListener('click', () => {
+            localStorage.removeItem('usuariosMundial');
+            mostrarUsuarios();
+        });
+
+       
+        document.addEventListener('DOMContentLoaded', mostrarUsuarios);
+    </script>
+</body>
+</html>
