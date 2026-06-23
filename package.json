@@ -1,0 +1,21 @@
+{
+  "name": "proyecto-mundial-pro",
+  "version": "1.0.0",
+  "description": "Sitio web del Mundial 2026 optimizado con Webpack",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "css-loader": "^7.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "html-minimizer-webpack-plugin": "^5.0.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^5.0.0"
+  }
+}

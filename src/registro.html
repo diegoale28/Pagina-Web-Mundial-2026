@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundial FIFA 2026 | Registro</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2222%22 font-size=%2222%22>🏆</text></svg>">
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="logo">Mundial 2026</div>
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav class="navbar">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="fasedegrupos.html">Fase de Grupos</a></li>
-                <li><a href="index.html#sedes">Sedes</a></li>
+                <li><a href="sedes.html">Sedes</a></li>
                 <li><a href="registro.html" class="active">Registro</a></li>
             </ul>
         </nav>
@@ -40,7 +44,7 @@
                 <div class="input-group">
                     <label for="equipo">Selección Favorita</label>
                     <select id="equipo">
-                        <option value="Alemania">Alemania</option>
+                       <option value="Alemania">Alemania</option>
                         <option value="Arabia Saudita">Arabia Saudita</option>
                         <option value="Argelia">Argelia</option>
                         <option value="Argentina">Argentina</option>
@@ -105,63 +109,15 @@
                         <th>Favorito</th>
                     </tr>
                 </thead>
-                <tbody>
-                    </tbody>
+                <tbody></tbody>
             </table>
             <button id="btnLimpiar" class="btn-clear">Limpiar Datos</button>
         </section>
     </main>
 
-    <script>
-        const form = document.getElementById('formRegistro');
-        const tablaBody = document.querySelector('#tablaUsuarios tbody');
-        const btnLimpiar = document.getElementById('btnLimpiar');
+    <footer>
+        <p>&copy; 2026 Proyecto Universitario</p>
+    </footer>
 
-        // Función para cargar y renderizar los usuarios desde LocalStorage
-        function mostrarUsuarios() {
-            tablaBody.innerHTML = '';
-
-            const usuarios = JSON.parse(localStorage.getItem('usuariosMundial')) || [];
-            
-            usuarios.forEach(user => {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${user.nombre}</td>
-                    <td>${user.email}</td>
-                    <td>${user.equipo}</td>
-                `;
-                tablaBody.appendChild(fila);
-            });
-        }
-
-        // Evento al enviar el formulario
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); 
-
-            const nuevoUsuario = {
-                nombre: document.getElementById('nombre').value,
-                email: document.getElementById('email').value,
-                equipo: document.getElementById('equipo').value
-            };
-
-            const usuarios = JSON.parse(localStorage.getItem('usuariosMundial')) || [];
-            usuarios.push(nuevoUsuario);
-
-            // Guardamos el array actualizado convertido en String JSON
-            localStorage.setItem('usuariosMundial', JSON.stringify(usuarios));
-            
-            form.reset(); 
-            mostrarUsuarios(); 
-        });
-
-        
-        btnLimpiar.addEventListener('click', () => {
-            localStorage.removeItem('usuariosMundial');
-            mostrarUsuarios();
-        });
-
-       
-        document.addEventListener('DOMContentLoaded', mostrarUsuarios);
-    </script>
 </body>
 </html>
