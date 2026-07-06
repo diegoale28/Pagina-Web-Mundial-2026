@@ -62,7 +62,7 @@ body {
     transition: var(--anim-cubic);
 }
 
-/* Animaciones del botón */
+
 .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--accent-color); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--accent-color); }
@@ -222,7 +222,7 @@ body {
 .carousel-control.prev { left: 15px; }
 .carousel-control.next { right: 15px; }
 
-/* RECUADROS COMPONENTE: ACORDEÓN DE SEDES */
+
 .sedes-section { padding: 60px 5%; }
 .sedes-section h2 { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
 .accordion-wrapper { max-width: 750px; margin: 0 auto; }
@@ -274,11 +274,11 @@ body {
 /* 1. Regla base para que los contenedores de las fotos se adapten correctamente */
 .card-img {
     width: 100%;
-    height: 240px;               /* Ajusta la altura que prefieras para que se vea el estadio */
+    height: 240px;               
     border-radius: 12px;
     margin-bottom: 20px;
-    background-size: cover;      /* Hace que la foto cubra todo el espacio sin deformarse */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;      
+    background-position: center; 
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -325,7 +325,7 @@ td { color: #cecece; font-size: 0.95rem; }
 
 footer { text-align: center; padding: 30px; background-color: #0b0b0b; color: #666; font-size: 0.9rem; border-top: 1px solid #222; }
 
-/* MEDIA QUERIES - RESPONSIVO DESKTOP */
+
 @media (min-width: 768px) {
     .menu-toggle { display: none; }
     .navbar { position: static; width: auto; height: auto; background: none; box-shadow: none; backdrop-filter: none; display: block; }
@@ -335,27 +335,23 @@ footer { text-align: center; padding: 30px; background-color: #0b0b0b; color: #6
     .hero-content h1 { font-size: 3.5rem; }
     .hero-content p { font-size: 1.2rem; }
 }
-/* ========================================================
-   DISEÑO RESPONSIVO PARA LA FASE DE GRUPOS (3 POR 3)
-   ======================================================== */
 
-/* 1. Comportamiento base (Móviles): 1 sola columna */
 .grid-sedes {
     display: grid;
-    grid-template-columns: 1fr;         /* Un grupo debajo del otro */
-    gap: 2rem;                          /* Espaciado elegante entre tarjetas */
+    grid-template-columns: 1fr;         
+    gap: 2rem;                          
     width: 100%;
-    max-width: 1400px;                  /* Evita que se estire infinito en monitores gigantes */
-    margin: 0 auto;                     /* Centra todo el bloque en la pantalla */
-    padding: 0 5%;                      /* Margen interno para que no pegue a los bordes */
+    max-width: 1400px;                  
+    margin: 0 auto;                     
+    padding: 0 5%;                      
 }
 
-/* Forzamos a que los contenedores de las tablas ocupen el 100% de su columna asignada */
+
 .grid-sedes .tabla-contenedor {
     width: 100%;
-    max-width: none;                    /* Rompe el límite de 650px estático en pantallas grandes */
+    max-width: none;                   
     margin: 0 auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra elegante acorde a tu diseño */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: var(--transition-smooth);
 }
 
@@ -366,16 +362,16 @@ footer { text-align: center; padding: 30px; background-color: #0b0b0b; color: #6
     box-shadow: 0 15px 35px rgba(13, 92, 58, 0.2);
 }
 
-/* 2. Pantallas Medianas (Tabletas - Desde 768px de ancho) */
+
 @media (min-width: 768px) {
     .grid-sedes {
-        grid-template-columns: repeat(2, 1fr); /* Se acomodan de 2 en 2 */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
-/* 3. Pantallas Grandes (Computadoras - Desde 1150px de ancho) */
+
 @media (min-width: 1150px) {
     .grid-sedes {
-        grid-template-columns: repeat(3, 1fr); /* ¡Logramos el diseño de 3 en 3! */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
