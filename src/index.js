@@ -2,9 +2,7 @@ import './styles.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==========================================
-    // 1. MENÚ DESPLEGABLE INTERACTIVO (RESPONSIVO)
-    // ==========================================
+    
     const menuToggle = document.querySelector('.menu-toggle');
     const navbar = document.querySelector('.navbar');
 
@@ -15,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
-    // 2. EFECTO PARALLAX CONTROLADO POR SCROLL
-    // ==========================================
+    
     const parallaxBg = document.querySelector('.parallax-bg');
     if (parallaxBg) {
         window.addEventListener('scroll', () => {
@@ -26,9 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
-    // 3. CARRUSEL INFORMATIVO (INICIO)
-    // ==========================================
+    
     const track = document.querySelector('.carousel-track');
     const slides = Array.from(document.querySelectorAll('.carousel-slide'));
     const nextBtn = document.querySelector('.carousel-control.next');
